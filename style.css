@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'roboto-google';
+    src: url(Roboto-Regular.ttf) format('truetype');
+}
+
+:root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(240 10% 3.9%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(240 10% 3.9%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(240 10% 3.9%);
+    --primary: hsl(240 5.9% 10%);
+    --primary-hover: hsla(240, 6%, 10%, 0.9);
+    --primary-foreground: hsl(0 0% 98%);
+    --secondary: hsl(240 4.8% 95.9%);
+    --secondary-foreground: hsl(240 5.9% 10%);
+    --muted: hsl(240 4.8% 95.9%);
+    --muted-foreground: hsl(240 3.8% 46.1%);
+    --accent: hsl(240 4.8% 95.9%);
+    --accent-foreground: hsl(240 5.9% 10%);
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(240 5.9% 90%);
+    --input: hsl(240 5.9% 90%);
+    --ring: hsl(240 5.9% 10%);
+    --radius: 0.5rem;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'roboto-google', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--foreground);
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-title {
+    font-weight: 600;
+    letter-spacing: 0.6rem;
+    font-size: 2.5rem;
+}
+
+.btn-primary {
+    color: var(--secondary);
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.btn-secondary:focus,
+.btn-primary:focus {
+    outline-offset: 0.1rem;
+    outline: 2px solid var(--muted-foreground);
+}
+
+.btn-secondary {
+    color: var(--secondary-foreground);
+    background-color: var(--secondary);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+}
+
+.btn-secondary:hover {
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    cursor: pointer;
+}
+
+.new-book-btn {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+
+/*   Open state of the dialog  */
+dialog[open] {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/*   Closed state of the dialog   */
+dialog {
+    opacity: 0;
+    transform: scaleY(0);
+    transition:
+        opacity 150ms ease-out,
+        transform 150ms ease-out,
+        overlay 150ms ease-out allow-discrete,
+        display 150ms ease-out allow-discrete;
+    /* Equivalent to
+    transition: all 0.7s allow-discrete; */
+}
+
+/*   Before-open state  */
+/* Needs to be after the previous dialog[open] rule to take effect,
+    as the specificity is the same */
+@starting-style {
+    dialog[open] {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+/* Transition the :backdrop when the dialog modal is promoted to the top layer */
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+    transition:
+        display 150ms allow-discrete,
+        overlay 150ms allow-discrete,
+        background-color 150ms;
+    /* Equivalent to
+    transition: all 0.7s allow-discrete; */
+}
+
+dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 25%);
+}
+
+/* This starting-style rule cannot be nested inside the above selector
+  because the nesting selector cannot represent pseudo-elements. */
+
+@starting-style {
+    dialog[open]::backdrop {
+        background-color: rgb(0 0 0 / 0%);
+    }
+}
+
+.dialog-style {
+    border: none;
+    background-color: var(--popover);
+    border-radius: var(--radius);
+}
