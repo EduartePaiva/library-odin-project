@@ -12,9 +12,42 @@
 <body>
     <h1 class="page-title">Library</h1>
     <dialog class="dialog-style">
-        <h2>Add a book</h2>
-        <button class="btn-secondary">Save</button>
-        <button class="btn-primary" onclick="closeModal()">Close</button>
+        <form action="">
+            <section>
+                <h2>Add a book</h2>
+                <ul>
+                    <li>
+                        <label for="book_title">
+                            <span>Title</span>
+                            <input type="text" name="title" id="book_title">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="book_author">
+                            <span>Author</span>
+                            <input type="text" name="author" id="book_author">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="book_pages">
+                            <span>Nº of pages</span>
+                            <input type="number" name="pages" id="book_pages">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="book_read" class="checkbox-label">
+                            <span>Have you read this book?</span>
+                            <input type="checkbox" name="read" id="book_read">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+            <div class="form-buttons">
+                <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary">Save</button>
+            </div>
+        </form>
     </dialog>
     <button onclick="showModal()" class="btn-primary new-book-btn">New Book</button>
     <div class="books-container">
