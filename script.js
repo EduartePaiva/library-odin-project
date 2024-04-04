@@ -133,7 +133,7 @@ function deleteChildFromBookshelf(index) {
  * @param {Book} book a book to add to the library
  */
 function addBookToLibrary(book) {
-    myLibrary.push(book)
+    myLibrary.unshift(book)
 }
 
 /**
@@ -151,4 +151,5 @@ form.onsubmit = (event) => {
     addBookToLibrary(book)
     form.reset()
     closeModal()
+    renderBooks()
 }
